@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies></GenerateSerializationAssemblies>
+    <WarningLevel>4</WarningLevel>
+    <OutputPath></OutputPath>
+	  <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Drypoint.Application.xml</DocumentationFile>
+	  <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Drypoint.Application.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.5" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\data\Drypoint.EntityFrameworkCore\Drypoint.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\model\Drypoint.Model.Custom\Drypoint.Model.Custom.csproj" />
+    <ProjectReference Include="..\..\model\Drypoint.Model\Drypoint.Model.csproj" />
+    <ProjectReference Include="..\..\unity\Drypoint.Exception\Drypoint.Exception.csproj" />
+  </ItemGroup>
+
+</Project>
