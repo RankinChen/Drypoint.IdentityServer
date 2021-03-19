@@ -1,31 +1,28 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using Autofac.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
+using Autofac.Extensions.DependencyInjection;
+using Drypoint.Core.Configuration;
+using System.Threading.Tasks;
 
-namespace Drypoint
+namespace Drypoint.IdentityServer
 {
     public class Program
     {
         private static string _environmentName;
-        public static void Main(string[] args)
+
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            await CreateHostBuilder(args).Build().RunWithTasksAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
             .UseServiceProviderFactory(new AutofacServiceProviderFactory())  //注册Autofac
-            //.ConfigureHostConfiguration(configHost =>
-            //{
-            //    configHost.SetBasePath(Directory.GetCurrentDirectory());
-            //    configHost.AddJsonFile("hostsettings.json", optional: true);
-            //    configHost.AddEnvironmentVariables(prefix: "DOTNET_");
-            //    configHost.AddCommandLine(args);
-            //})
             .ConfigureLogging((hostingContext, logBuilder) =>
             {
                 _environmentName = hostingContext.HostingEnvironment.EnvironmentName;
@@ -51,11 +48,11 @@ namespace Drypoint
                     //var env = hostingContext.HostingEnvironment;
                     //根据环境变量加载不同的JSON配置
                     config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                            .AddJsonFile($"appsettings.{_environmentName}.json",optional: true, reloadOnChange: true);
+                        .AddJsonFile($"appsettings.{_environmentName}.json",
+                            optional: true, reloadOnChange: true);
                     //从环境变量添加配置
                     config.AddEnvironmentVariables("DOTNET_");
                 }).UseStartup<Startup>();
             });
-
     }
 }

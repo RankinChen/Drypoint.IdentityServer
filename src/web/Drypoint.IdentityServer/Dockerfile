@@ -8,16 +8,16 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.2-sdk-nanoserver-1803 AS build
 WORKDIR /src
-COPY ["src/host/Drypoint.SSO/Drypoint.SSO.csproj", "src/host/Drypoint.SSO/"]
-RUN dotnet restore "src/host/Drypoint.SSO/Drypoint.SSO.csproj"
+COPY ["src/host/Drypoint.IdentityServer/Drypoint.IdentityServer.csproj", "src/host/Drypoint.IdentityServer/"]
+RUN dotnet restore "src/host/Drypoint.IdentityServer/Drypoint.IdentityServer.csproj"
 COPY . .
-WORKDIR "/src/src/host/Drypoint.SSO"
-RUN dotnet build "Drypoint.SSO.csproj" -c Release -o /app
+WORKDIR "/src/src/host/Drypoint.IdentityServer"
+RUN dotnet build "Drypoint.IdentityServer.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Drypoint.SSO.csproj" -c Release -o /app
+RUN dotnet publish "Drypoint.IdentityServer.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Drypoint.SSO.dll"]
+ENTRYPOINT ["dotnet", "Drypoint.IdentityServer.dll"]

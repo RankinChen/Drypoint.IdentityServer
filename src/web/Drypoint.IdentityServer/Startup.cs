@@ -17,7 +17,7 @@ using Drypoint.Application.AutoMapper;
 using Drypoint.Unity.EnumCollection;
 using IdentityServer4.Configuration;
 
-namespace Drypoint.SSO
+namespace Drypoint.IdentityServer
 {
     public partial class Startup
     {
@@ -34,6 +34,8 @@ namespace Drypoint.SSO
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddResponseCompression();
+
             //注册Http上下文访问服务
             services.AddHttpContextAccessor();
             services.AddHttpClient();

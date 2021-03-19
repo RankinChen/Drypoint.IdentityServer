@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drypoint.Exception", "src\u
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drypoint.Unity", "src\unity\Drypoint.Unity\Drypoint.Unity.csproj", "{B4D0406C-D595-45A5-BB89-4010A8F1DE1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drypoint.IdentityServer", "src\web\Drypoint.IdentityServer\Drypoint.IdentityServer.csproj", "{BBD5C364-FD77-4571-A090-413F4361BFDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Drypoint.IdentityServer", "src\web\Drypoint.SSO\Drypoint.IdentityServer.csproj", "{BBD5C364-FD77-4571-A090-413F4361BFDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
