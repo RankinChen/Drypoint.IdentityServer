@@ -13,6 +13,13 @@ namespace Drypoint.IdentityServer.Hosting
     {
         public static void Main(string[] args)
         {
+            Console.Title = "Drypoint.IdentityServer.Hosting";
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
+                .Enrich.FromLogContext()
             CreateHostBuilder(args).Build().Run();
         }
 

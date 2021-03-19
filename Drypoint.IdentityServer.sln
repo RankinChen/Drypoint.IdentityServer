@@ -7,15 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Hosting", "1.Hosting", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{78A1B220-35EC-4F5B-BA1A-94B545CCACD0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Application.Contracts", "3.Application.Contracts", "{37C5FDCC-FCC5-45E1-A00A-ED0C3A140ACF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Domain", "3.Domain", "{F62CBBFA-0763-4811-AEE9-50FB557A9DFC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.Domain", "4.Domain", "{F62CBBFA-0763-4811-AEE9-50FB557A9DFC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.EntityFrameworkCore", "4.EntityFrameworkCore", "{22D919CE-57C2-427A-91DC-B9F64E5300B4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Domain.Shared", "5.Domain.Shared", "{E772C6D9-55C7-4E9A-B3E3-5CFDF09870A4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.EntityFrameworkCore", "6.EntityFrameworkCore", "{22D919CE-57C2-427A-91DC-B9F64E5300B4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.EntityFrameworkCore.DbMigrations", "7.EntityFrameworkCore.DbMigrations", "{550BDC6D-F85E-49EB-A25A-72CB326DA72B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.EntityFrameworkCore.DbMigrations", "5.EntityFrameworkCore.DbMigrations", "{550BDC6D-F85E-49EB-A25A-72CB326DA72B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9.ToolKits", "9.ToolKits", "{1B2CEB12-706C-4EC4-A805-28AE4D8E4142}"
 EndProject
