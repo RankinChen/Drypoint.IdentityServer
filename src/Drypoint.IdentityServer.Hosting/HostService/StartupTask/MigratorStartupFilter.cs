@@ -26,7 +26,7 @@ namespace Drypoint.IdentityServer.Hosting.HostService.StartupTask
         {
             using var scope = _serviceProvider.CreateScope();
 
-            var drypointDbContext = scope.ServiceProvider.GetRequiredService<DrypointIdentityServerDbContext>();
+            var drypointDbContext = scope.ServiceProvider.GetRequiredService<DrypointDbContext>();
 
             await drypointDbContext.Database.MigrateAsync();
         }

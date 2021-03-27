@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Drypoint.IdentityServer.Hosting.Data.Migrations
 {
-    public partial class Init : Migration
+    public partial class Init_DrypointDbContext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,16 +14,15 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    OrderSort = table.Column<int>(type: "integer", nullable: false),
-                    Enabled = table.Column<bool>(type: "boolean", nullable: false),
-                    CreateId = table.Column<int>(type: "integer", nullable: true),
-                    CreateBy = table.Column<string>(type: "text", nullable: true),
-                    CreateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    ModifyId = table.Column<int>(type: "integer", nullable: true),
-                    ModifyBy = table.Column<string>(type: "text", nullable: true),
-                    ModifyTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    CreatorUserId = table.Column<int>(type: "integer", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    LastModifierUserId = table.Column<int>(type: "integer", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    DeleterUserId = table.Column<int>(type: "integer", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
@@ -41,11 +40,18 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     LoginName = table.Column<string>(type: "text", nullable: true),
                     RealName = table.Column<string>(type: "text", nullable: true),
-                    sex = table.Column<int>(type: "integer", nullable: false),
-                    age = table.Column<int>(type: "integer", nullable: false),
-                    birth = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    addr = table.Column<string>(type: "text", nullable: true),
-                    tdIsDelete = table.Column<bool>(type: "boolean", nullable: false),
+                    Sex = table.Column<int>(type: "integer", nullable: false),
+                    Age = table.Column<int>(type: "integer", nullable: false),
+                    Birthday = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
+                    CreatorUserId = table.Column<int>(type: "integer", nullable: true),
+                    CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    LastModifierUserId = table.Column<int>(type: "integer", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    DeleterUserId = table.Column<int>(type: "integer", nullable: true),
+                    DeletionTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
