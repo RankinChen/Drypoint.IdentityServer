@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Drypoint.IdentityServer.Hosting.Migrations
+namespace Drypoint.IdentityServer.Hosting.Data.Migrations
 {
     public partial class Init : Migration
     {

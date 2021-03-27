@@ -3,17 +3,15 @@ using System;
 using Drypoint.IdentityServer.Hosting.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Drypoint.IdentityServer.Hosting.Migrations
+namespace Drypoint.IdentityServer.Hosting.Data.Migrations
 {
     [DbContext(typeof(DrypointIdentityServerDbContext))]
-    [Migration("20210325143225_Init")]
-    partial class Init
+    partial class DrypointIdentityServerDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

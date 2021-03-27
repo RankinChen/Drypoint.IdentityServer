@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Drypoint.IdentityServer.Hosting.Migrations.PersistedGrantDb
+namespace Drypoint.IdentityServer.Hosting.Data.Migrations.IdentityServer.PersistedGrantDb
 {
     public partial class Init_PersistedGrantDbContext : Migration
     {
