@@ -2,6 +2,7 @@
 using Drypoint.IdentityServer.Hosting.Models;
 using Drypoint.IdentityServer.Hosting.ToolKit;
 using Drypoint.IdentityServer.Hosting.ToolKit.EnumCollection;
+using IdentityServer4.EntityFramework.DbContexts;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -15,17 +16,36 @@ namespace Drypoint.IdentityServer.Hosting.Extensions
         public static void AddDrypointIdentityServerDbContext(this IServiceCollection services, IConfiguration configuration, DBCategoryEnum dbCategory)
         {
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
-            services.AddDbContext<DrypointIdentityServerDbContext>(o =>
+            if (dbCategory == DBCategoryEnum.PostgreSQL)
             {
-                if (dbCategory == DBCategoryEnum.PostgreSQL)
+                services.AddDbContext<DrypointIdentityServerDbContext>(o =>
                 {
                     o.UseNpgsql(configuration.GetConnectionString(DrypointConst.ConnectionStringName_PostgreSQL), sql => sql.MigrationsAssembly(migrationsAssembly));
-                }
-                else if (dbCategory == DBCategoryEnum.SQLServer)
+                });
+                services.AddDbContext<ConfigurationDbContext>(o =>
+                {
+                    o.UseNpgsql(configuration.GetConnectionString(DrypointConst.ConnectionStringName_PostgreSQL), sql => sql.MigrationsAssembly(migrationsAssembly));
+                });
+                services.AddDbContext<PersistedGrantDbContext>(o =>
+                {
+                    o.UseNpgsql(configuration.GetConnectionString(DrypointConst.ConnectionStringName_PostgreSQL), sql => sql.MigrationsAssembly(migrationsAssembly));
+                });
+            }
+            else if (dbCategory == DBCategoryEnum.SQLServer)
+            {
+                services.AddDbContext<DrypointIdentityServerDbContext>(o =>
                 {
                     o.UseSqlServer(configuration.GetConnectionString(DrypointConst.ConnectionStringName_Default), sql => sql.MigrationsAssembly(migrationsAssembly));
-                }
-            });
+                });
+                services.AddDbContext<ConfigurationDbContext>(o =>
+                {
+                    o.UseSqlServer(configuration.GetConnectionString(DrypointConst.ConnectionStringName_Default), sql => sql.MigrationsAssembly(migrationsAssembly));
+                });
+                services.AddDbContext<PersistedGrantDbContext>(o =>
+                {
+                    o.UseSqlServer(configuration.GetConnectionString(DrypointConst.ConnectionStringName_Default), sql => sql.MigrationsAssembly(migrationsAssembly));
+                });
+            }
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
                 options.User = new UserOptions
@@ -68,5 +88,5 @@ namespace Drypoint.IdentityServer.Hosting.Extensions
         }
     }
 
-    
+
 }

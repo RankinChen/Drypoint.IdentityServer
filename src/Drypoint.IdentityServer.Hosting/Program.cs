@@ -1,3 +1,4 @@
+using Drypoint.IdentityServer.Hosting.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -13,7 +14,7 @@ namespace Drypoint.IdentityServer.Hosting
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.Title = "Drypoint.IdentityServer.Hosting";
             Log.Logger = new LoggerConfiguration()
@@ -26,7 +27,7 @@ namespace Drypoint.IdentityServer.Hosting
 
             var host = CreateHostBuilder(args).Build();
 
-            host.Run();
+            await host.RunWithTasksAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

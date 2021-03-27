@@ -1,5 +1,6 @@
 using Drypoint.IdentityServer.Hosting.Authorization;
 using Drypoint.IdentityServer.Hosting.Extensions;
+using Drypoint.IdentityServer.Hosting.HostService;
 using Drypoint.IdentityServer.Hosting.Models;
 using Drypoint.IdentityServer.Hosting.ToolKit;
 using Drypoint.IdentityServer.Hosting.ToolKit.EnumCollection;
@@ -135,32 +136,9 @@ namespace Drypoint.IdentityServer.Hosting
                 .AddAspNetIdentity<ApplicationUser>()
 
                 // this adds the config data from DB (clients, resources)
-                .AddConfigurationStore(options =>
-                {
-                    //if (dbCategory == DBCategoryEnum.PostgreSQL)
-                    //{
-                    //    options.ConfigureDbContext = b => b.UseNpgsql(Configuration.GetConnectionString(DrypointConst.ConnectionStringName_PostgreSQL), 
-                    //                                                    sql => sql.MigrationsAssembly(migrationsAssembly));
-                    //}
-                    //else if (dbCategory == DBCategoryEnum.SQLServer)
-                    //{
-                    //    options.ConfigureDbContext = b => b.UseSqlServer(Configuration.GetConnectionString(DrypointConst.ConnectionStringName_Default),
-                    //                                                    sql => sql.MigrationsAssembly(migrationsAssembly));
-                    //}
-                })
+                .AddConfigurationStore()
                 .AddOperationalStore(options =>
                 {
-                    //if (dbCategory == DBCategoryEnum.PostgreSQL)
-                    //{
-                    //    options.ConfigureDbContext = b => b.UseNpgsql(Configuration.GetConnectionString(DrypointConst.ConnectionStringName_PostgreSQL),
-                    //                                                    sql => sql.MigrationsAssembly(migrationsAssembly));
-                    //}
-                    //else if (dbCategory == DBCategoryEnum.SQLServer)
-                    //{
-                    //    options.ConfigureDbContext = b => b.UseSqlServer(Configuration.GetConnectionString(DrypointConst.ConnectionStringName_Default),
-                    //                                                    sql => sql.MigrationsAssembly(migrationsAssembly));
-                    //}
-
                     // this enables automatic token cleanup. this is optional.
                     options.EnableTokenCleanup = true;
                     // options.TokenCleanupInterval = 15; // frequency in seconds to cleanup stale grants. 15 is useful during debugging
@@ -172,7 +150,9 @@ namespace Drypoint.IdentityServer.Hosting
             }
             #endregion
 
-
+            #region BackgroundService
+            services.AddHostedService<InitDataService>();
+            #endregion
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.Requirements.Add(new ClaimRequirement("rolename", "Admin")));
