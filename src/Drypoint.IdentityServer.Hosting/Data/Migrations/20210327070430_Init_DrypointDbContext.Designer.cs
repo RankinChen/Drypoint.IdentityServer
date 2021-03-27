@@ -3,15 +3,17 @@ using System;
 using Drypoint.IdentityServer.Hosting.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Drypoint.IdentityServer.Hosting.Data.Migrations
 {
-    [DbContext(typeof(DrypointIdentityServerDbContext))]
-    partial class DrypointIdentityServerDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DrypointDbContext))]
+    [Migration("20210327070430_Init_DrypointDbContext")]
+    partial class Init_DrypointDbContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,32 +32,32 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
-                    b.Property<string>("CreateBy")
-                        .HasColumnType("text");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Property<int?>("CreateId")
+                    b.Property<int?>("CreatorUserId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("CreateTime")
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<bool>("Enabled")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("ModifyBy")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("ModifyId")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime?>("ModifyTime")
+                    b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
@@ -64,9 +66,6 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<int>("OrderSort")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -87,9 +86,30 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Birthday")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("CreatorUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("DeleterUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -97,6 +117,18 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int?>("LastModifierUserId")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -130,27 +162,15 @@ namespace Drypoint.IdentityServer.Hosting.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
+                    b.Property<int>("Sex")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<string>("addr")
-                        .HasColumnType("text");
-
-                    b.Property<int>("age")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("birth")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("sex")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("tdIsDelete")
-                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 

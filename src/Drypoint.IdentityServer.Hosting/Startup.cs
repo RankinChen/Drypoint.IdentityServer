@@ -43,7 +43,7 @@ namespace Drypoint.IdentityServer.Hosting
             #region CORS
             services.AddCors(options =>
             {
-                options.AddPolicy(DrypointConst.LocalCorsPolicyName, builder =>
+                options.AddPolicy(DrypointConsts.LocalCorsPolicyName, builder =>
                 {
                     builder
                         //.WithOrigins(
@@ -64,7 +64,7 @@ namespace Drypoint.IdentityServer.Hosting
 
             #region SQL
             var dbCategory = DBCategoryEnum.PostgreSQL;
-            services.AddDrypointIdentityServerDbContext(Configuration, dbCategory);
+            services.AddDrypointDbContext(Configuration, dbCategory);
             #endregion 
 
             #region https
@@ -189,7 +189,7 @@ namespace Drypoint.IdentityServer.Hosting
             app.UseRouting();
 
             //注册跨域策略到管道
-            app.UseCors(DrypointConst.LocalCorsPolicyName);
+            app.UseCors(DrypointConsts.LocalCorsPolicyName);
 
             //授权相关：服务端代码  注册IdentityServer4到管道
             app.UseIdentityServer();

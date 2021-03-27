@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Drypoint.IdentityServer.Hosting.ToolKit
 {
-    public class DrypointConst
+    public class DrypointConsts
     {
         #region 数据库连接字符串 Key
         /// <summary>
