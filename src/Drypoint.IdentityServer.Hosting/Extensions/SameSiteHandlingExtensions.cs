@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Drypoint.IdentityServer.Hosting.Extensions
 {
-    // copied from https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/
+    // copied from https://devDrypoints.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/
     public static class SameSiteHandlingExtensions
     {
         public static IServiceCollection AddSameSiteCookiePolicy(this IServiceCollection services)
