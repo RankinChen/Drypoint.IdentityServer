@@ -1,6 +1,7 @@
 using Drypoint.IdentityServer.Hosting.Authorization;
 using Drypoint.IdentityServer.Hosting.Extensions;
 using Drypoint.IdentityServer.Hosting.HostService;
+using Drypoint.IdentityServer.Hosting.HostService.StartupTask;
 using Drypoint.IdentityServer.Hosting.Models;
 using Drypoint.IdentityServer.Hosting.ToolKit;
 using Drypoint.IdentityServer.Hosting.ToolKit.EnumCollection;
@@ -37,6 +38,7 @@ namespace Drypoint.IdentityServer.Hosting
 
             //注册Http上下文访问服务
             services.AddHttpContextAccessor();
+            services.AddSingleton<IStartupTask, MigratorStartup>();
 
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
         
