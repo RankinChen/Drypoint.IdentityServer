@@ -38,6 +38,7 @@ namespace Drypoint.IdentityServer.Hosting.ToolKit
 
         #region 自定义授权相关scope
         public const string RolesScope = "roles";
+        public const string RolesNameScope = "rolename";
         #endregion
 
         /// <summary>
