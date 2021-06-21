@@ -23,6 +23,15 @@ namespace Drypoint.IdentityServer.Hosting
                 .MinimumLevel.Override("System", LogEventLevel.Warning)
                 .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
                 .Enrich.FromLogContext()
+                .WriteTo.Console(restrictedToMinimumLevel: LogEventLevel.Information)
+                .WriteTo.File(
+                        "Logs/log.txt",
+                        shared: true,
+                        restrictedToMinimumLevel: LogEventLevel.Warning,
+                        rollingInterval: RollingInterval.Day,
+                        fileSizeLimitBytes: 5242880,
+                        rollOnFileSizeLimit: true,
+                        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
                 .CreateLogger();
 
             var host = CreateHostBuilder(args).Build();

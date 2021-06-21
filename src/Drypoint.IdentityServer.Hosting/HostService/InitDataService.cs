@@ -28,31 +28,31 @@ namespace Drypoint.IdentityServer.Hosting.HostService
         }
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            using (var scope = _serviceProvider.CreateScope())
-            {
-                try
-                {
-                    await Task.Factory.StartNew( () =>
-                    {
-                        var filePath = _hostEnvironment.ContentRootPath;
-                        filePath = Path.Combine(filePath, "config");
-                        if (Directory.Exists(filePath))
-                        {
-                            foreach (var dirPath in Directory.GetDirectories(filePath))
-                            {
+            //using (var scope = _serviceProvider.CreateScope())
+            //{
+            //    try
+            //    {
+            //        await Task.Factory.StartNew( () =>
+            //        {
+            //            var filePath = _hostEnvironment.ContentRootPath;
+            //            filePath = Path.Combine(filePath, "config");
+            //            if (Directory.Exists(filePath))
+            //            {
+            //                foreach (var dirPath in Directory.GetDirectories(filePath))
+            //                {
 
-                            }
-                        }
-                    }, TaskCreationOptions.LongRunning);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError($"InitDataService Exception：{ex}");
-                    throw;
-                }
-            }
+            //                }
+            //            }
+            //        }, TaskCreationOptions.LongRunning);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        _logger.LogError($"InitDataService Exception：{ex}");
+            //        throw;
+            //    }
+            //}
 
-            //定时执行
+            //后台执行
             while (!stoppingToken.IsCancellationRequested)
             {
                 _logger.LogDebug("InitDataService 后台同步服务正在执行");
