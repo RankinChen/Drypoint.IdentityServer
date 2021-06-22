@@ -232,7 +232,7 @@ namespace Drypoint.IdentityServer.Data.InitData
             }); 
             roles.Add(new ApplicationRole()
             {
-                Id = 3,
+                Id = 4,
                 Name = "Test",
                 IsActive = true
             });
@@ -261,6 +261,10 @@ namespace Drypoint.IdentityServer.Data.InitData
             {
                 UserId = 2,
                 RoleId = 3
+            }); userRoles.Add(new ApplicationUserRole()
+            {
+                UserId = 1,
+                RoleId = 4
             });
             return userRoles;
         }
