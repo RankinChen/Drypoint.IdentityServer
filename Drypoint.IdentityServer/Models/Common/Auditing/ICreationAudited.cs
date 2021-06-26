@@ -12,7 +12,7 @@ namespace Drypoint.IdentityServer.Models.Common.Auditing
         /// <summary>
         /// 创建用户Id
         /// </summary>
-        TPrimaryKey CreatorUserId { get; set; }
+        long? CreatorUserId { get; set; }
 
         /// <summary>
         /// 创建时间

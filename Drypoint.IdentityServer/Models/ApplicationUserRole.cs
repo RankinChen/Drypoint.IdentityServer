@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Drypoint.IdentityServer.Models
 {
-    public class ApplicationUserRole : IdentityUserRole<int>
+    public class ApplicationUserRole : IdentityUserRole<long>
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 

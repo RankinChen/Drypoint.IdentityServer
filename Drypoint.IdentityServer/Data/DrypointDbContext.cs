@@ -22,7 +22,7 @@ namespace Drypoint.IdentityServer.Data
     /// 1.全局安装 dotnet tool install --global dotnet-ef
     ///         （dotnet tool update --global dotnet-ef）
     /// </summary>
-    public class DrypointDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, IdentityUserClaim<int>, ApplicationUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+    public class DrypointDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, long, IdentityUserClaim<long>, ApplicationUserRole, IdentityUserLogin<long>, IdentityRoleClaim<long>, IdentityUserToken<long>>
     {
 
         public DrypointDbContext(DbContextOptions<DrypointDbContext> options)

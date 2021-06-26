@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Drypoint.IdentityServer.Models
 {
-    public class ApplicationUser : IdentityUser<int>,ISoftDelete,IPassivable,IFullAudited<int?>
+    public class ApplicationUser : IdentityUser<long>,ISoftDelete,IPassivable,IFullAudited<long?>
     {
         public string LoginName { get; set; }
 
@@ -28,11 +28,11 @@ namespace Drypoint.IdentityServer.Models
        /// 是否删除
        /// </summary>
         public bool IsDeleted { get; set; }
-        public int? CreatorUserId { get; set; }
+        public long? CreatorUserId { get; set; }
         public DateTime CreationTime { get; set; }
-        public int? LastModifierUserId { get; set; }
-        public DateTime? LastModificationTime { get; set; }
-        public int? DeleterUserId { get; set; }
+        public long? ModifierUserId { get; set; }
+        public DateTime? ModificationTime { get; set; }
+        public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
         public bool IsActive { get; set; }
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }

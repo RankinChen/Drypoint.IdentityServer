@@ -12,7 +12,7 @@ public interface IDeletionAudited<TPrimaryKey>
         /// <summary>
         /// 删除用户Id
         /// </summary>
-        TPrimaryKey DeleterUserId { get; set; }
+        long? DeleterUserId { get; set; }
 
         /// <summary>
         /// 删除时间

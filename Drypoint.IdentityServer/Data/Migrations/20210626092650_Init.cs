@@ -12,14 +12,14 @@ namespace Drypoint.IdentityServer.Data.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Description = table.Column<string>(type: "text", nullable: true),
-                    CreatorUserId = table.Column<int>(type: "integer", nullable: true),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    LastModifierUserId = table.Column<int>(type: "integer", nullable: true),
-                    LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    DeleterUserId = table.Column<int>(type: "integer", nullable: true),
+                    ModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    ModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
                     DeletionTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
@@ -36,7 +36,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     LoginName = table.Column<string>(type: "text", nullable: true),
                     RealName = table.Column<string>(type: "text", nullable: true),
@@ -45,11 +45,11 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     Birthday = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Address = table.Column<string>(type: "text", nullable: true),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
-                    CreatorUserId = table.Column<int>(type: "integer", nullable: true),
+                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    LastModifierUserId = table.Column<int>(type: "integer", nullable: true),
-                    LastModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
-                    DeleterUserId = table.Column<int>(type: "integer", nullable: true),
+                    ModifierUserId = table.Column<long>(type: "bigint", nullable: true),
+                    ModificationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
                     DeletionTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -78,7 +78,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoleId = table.Column<int>(type: "integer", nullable: false),
+                    RoleId = table.Column<long>(type: "bigint", nullable: false),
                     ClaimType = table.Column<string>(type: "text", nullable: true),
                     ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
@@ -99,7 +99,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
                     ClaimType = table.Column<string>(type: "text", nullable: true),
                     ClaimValue = table.Column<string>(type: "text", nullable: true)
                 },
@@ -121,7 +121,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     LoginProvider = table.Column<string>(type: "text", nullable: false),
                     ProviderKey = table.Column<string>(type: "text", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "text", nullable: true),
-                    UserId = table.Column<int>(type: "integer", nullable: false)
+                    UserId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,9 +138,9 @@ namespace Drypoint.IdentityServer.Data.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    RoleId = table.Column<int>(type: "integer", nullable: false),
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
+                    RoleId = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -163,7 +163,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
                     LoginProvider = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Value = table.Column<string>(type: "text", nullable: true)

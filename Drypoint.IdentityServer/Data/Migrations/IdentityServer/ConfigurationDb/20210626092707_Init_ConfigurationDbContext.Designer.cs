@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Drypoint.IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(ConfigurationDbContext))]
-    [Migration("20210622134658_Init_ConfigurationDbContext")]
+    [Migration("20210626092707_Init_ConfigurationDbContext")]
     partial class Init_ConfigurationDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

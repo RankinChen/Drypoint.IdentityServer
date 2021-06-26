@@ -21,9 +21,9 @@ namespace Drypoint.IdentityServer.Data.Migrations
 
             modelBuilder.Entity("Drypoint.IdentityServer.Models.ApplicationRole", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("ConcurrencyStamp")
@@ -33,11 +33,11 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int?>("CreatorUserId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp without time zone");
@@ -51,11 +51,11 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime?>("LastModificationTime")
+                    b.Property<DateTime?>("ModificationTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("ModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
@@ -76,9 +76,9 @@ namespace Drypoint.IdentityServer.Data.Migrations
 
             modelBuilder.Entity("Drypoint.IdentityServer.Models.ApplicationUser", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
+                        .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AccessFailedCount")
@@ -100,11 +100,11 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int?>("CreatorUserId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int?>("DeleterUserId")
-                        .HasColumnType("integer");
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("timestamp without time zone");
@@ -122,12 +122,6 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int?>("LastModifierUserId")
-                        .HasColumnType("integer");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
 
@@ -136,6 +130,12 @@ namespace Drypoint.IdentityServer.Data.Migrations
 
                     b.Property<string>("LoginName")
                         .HasColumnType("text");
+
+                    b.Property<DateTime?>("ModificationTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<long?>("ModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -184,14 +184,14 @@ namespace Drypoint.IdentityServer.Data.Migrations
 
             modelBuilder.Entity("Drypoint.IdentityServer.Models.ApplicationUserRole", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("integer");
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -200,7 +200,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -213,8 +213,8 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("text");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("integer");
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -223,7 +223,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -236,8 +236,8 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
@@ -246,7 +246,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("text");
@@ -257,8 +257,8 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -267,10 +267,10 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("text");
@@ -305,7 +305,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.HasOne("Drypoint.IdentityServer.Models.ApplicationRole", null)
                         .WithMany()
@@ -314,7 +314,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
                 {
                     b.HasOne("Drypoint.IdentityServer.Models.ApplicationUser", null)
                         .WithMany()
@@ -323,7 +323,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
                     b.HasOne("Drypoint.IdentityServer.Models.ApplicationUser", null)
                         .WithMany()
@@ -332,7 +332,7 @@ namespace Drypoint.IdentityServer.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
                 {
                     b.HasOne("Drypoint.IdentityServer.Models.ApplicationUser", null)
                         .WithMany()

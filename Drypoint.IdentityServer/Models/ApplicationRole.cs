@@ -8,18 +8,17 @@ using System.Threading.Tasks;
 
 namespace Drypoint.IdentityServer.Models
 {
-    public class ApplicationRole : IdentityRole<int>, ISoftDelete, IPassivable, IFullAudited<int?>
+    public class ApplicationRole : IdentityRole<long>, ISoftDelete, IPassivable, IFullAudited<long>
     {
         public string Description { get; set; }
-        public int? CreatorUserId { get; set; }
+        public long? CreatorUserId { get; set; }
         public DateTime CreationTime { get; set; }
-        public int? LastModifierUserId { get; set; }
-        public DateTime? LastModificationTime { get; set; }
-        public int? DeleterUserId { get; set; }
+        public long? ModifierUserId { get; set; }
+        public DateTime? ModificationTime { get; set; }
+        public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
-
     }
 }

@@ -12,11 +12,11 @@ namespace Drypoint.IdentityServer.Models.Common.Auditing
         /// <summary>
         /// 更新用户Id
         /// </summary>
-        TPrimaryKey LastModifierUserId { get; set; }
+        long? ModifierUserId { get; set; }
 
         /// <summary>
         /// 更新时间
         /// </summary>
-        DateTime? LastModificationTime { get; set; }
+        DateTime? ModificationTime { get; set; }
     }
 }

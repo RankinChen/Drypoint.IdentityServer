@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Drypoint.IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 {
     [DbContext(typeof(PersistedGrantDbContext))]
-    [Migration("20210622134711_Init_PersistedGrantDbContext")]
+    [Migration("20210626092722_Init_PersistedGrantDbContext")]
     partial class Init_PersistedGrantDbContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
